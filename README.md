@@ -1,5 +1,5 @@
-# wp-plugin-template
- WordPressプラグイン開発用雛形
+# AW Rinker Extend
+Rinker拡張プラグイン
 
 開発時には`gh-auto-updater`のインストールを忘れない
 
