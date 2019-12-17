@@ -28,6 +28,7 @@ add_filter('the_content', 'replace_aatag', 990);
 function rinker_extend($atts,$content=null){
 	extract(shortcode_atts(array(
         'post_id' => "",
+        'ribbon_type' => "",
 	), $atts));
 	$id=$post_id;
 	$tag="careru00-22";
@@ -152,10 +153,58 @@ EOL;
 	
 	}
 	
+	//リボン処理
+	if($ribbon_type!=''){
+		
+		
+
+		//<span class="ribbon17">NEW</span>
+		/*
+			new
+			pickup
+			check
+			detail
+			recommend
+		*/
+		$ribbonValue='';
+		switch($ribbon_type){
+			case 'new':
+				$ribbonValue='<span class="rinker-ribbon-new">NEW</span>';
+				break;
+			case 'pickup':
+				$ribbonValue='<span class="rinker-ribbon-pickup">ピックアップ</span>';
+				break;
+			case 'check':
+				$ribbonValue='<span class="rinker-ribbon-check">チェック</span>';
+				break;
+			case 'detail':
+				$ribbonValue='<span class="rinker-ribbon-detail">詳細</span>';
+				break;
+			case 'recommend':
+				$ribbonValue='<span class="rinker-ribbon-recommend">オススメ</span>';
+				break;
+			default;
+		}
+		
+		if($ribbonValue==''){
+			$ribbon_html='';
+		}else{
+			$ribbon_html='<div class="rinker-ribbon-wrap">';
+			$ribbon_html.=$ribbonValue;
+			$ribbon_html.='</div>';
+		}
+
+
+		
+	}else{
+		$ribbon_html='';
+	}
+	
 	
 	$html = <<<EOL
 
 <div id="rinkerid{$id}" class="yyi-rinker-contents yyi-rinker-postid-{$id} yyi-rinker-img-l yyi-rinker-catid-1 ">
+{$ribbon_html}
 	<div class="yyi-rinker-box">
 		<div class="yyi-rinker-image">
 							<a rel="nofollow noopener external" href="{$link->amazon}" class="yyi-rinker-tracking" data-click-tracking="amazon_img {$id} {$title}" data-vars-click-id="amazon_img {$id} {$title}"><img alt="" src="{$img}" width="{$size->width}" height="{$size->height}" class="yyi-rinker-main-img" style="border: none;"></a>					</div>

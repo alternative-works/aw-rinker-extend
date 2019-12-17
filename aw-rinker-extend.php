@@ -4,7 +4,7 @@ Plugin Name: AW Rinker Extend
 Plugin URI: https://careru.jp/
 Description: Rinker拡張
 Author: Alternative Works
-Version: 0.0.3
+Version: 0.0.4
 Author URI: https://careru.jp/
 */
 if ( ! defined( 'ABSPATH' ) ) {
